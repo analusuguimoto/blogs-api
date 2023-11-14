@@ -8,6 +8,12 @@ const user = async (req, res) => {
   res.status(statushttp[result.status]).json(result.data);
 };
 
+const getAllUsers = async (req, res) => {
+  const result = await userService.getAllUsers();
+  res.status(statushttp[result.status]).json(result.data);
+};
+
 module.exports = {
   user,
+  getAllUsers,
 };
