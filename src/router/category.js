@@ -7,5 +7,6 @@ const catValidation = require('../validations/category');
 const category = require('../controllers/category');
 
 router.post('/', userAuth.jwtUser, catValidation, category.categoryPost);
+router.get('/', userAuth.jwtUser, category.categoryGet);
 
 module.exports = router;

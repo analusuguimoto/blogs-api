@@ -8,6 +8,12 @@ const categoryPost = async (req, res) => {
   res.status(statushttp[result.status]).json(result.data);
 };
 
+const categoryGet = async (req, res) => {
+  const result = await category.categoryGet();
+  res.status(statushttp[result.status]).json(result.data);
+};
+
 module.exports = {
   categoryPost,
+  categoryGet,
 };
