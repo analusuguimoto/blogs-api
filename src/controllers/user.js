@@ -13,7 +13,14 @@ const getAllUsers = async (req, res) => {
   res.status(statushttp[result.status]).json(result.data);
 };
 
+const userById = async (req, res) => {
+  const { id } = req.params;
+  const result = await userService.userById(id);
+  res.status(statushttp[result.status]).json(result.data);
+};
+
 module.exports = {
   user,
   getAllUsers,
+  userById,
 };

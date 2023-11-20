@@ -8,5 +8,6 @@ const userAuth = require('../jwt/user-auth');
 
 router.post('/', validation, user.user);
 router.get('/', userAuth.jwtUser, user.getAllUsers);
+router.get('/:id', userAuth.jwtUser, user.userById);
 
 module.exports = router;
