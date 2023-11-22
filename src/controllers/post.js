@@ -21,8 +21,19 @@ const postById = async (req, res) => {
   res.status(statushttp[findPost.status]).json(findPost.data);
 };
 
+const updatePost = async (req, res) => {
+  const { id } = req.params;
+  const { user } = req;
+  const userId = user.data.id;
+  const { title, content } = req.body;
+
+  const resp = await postService.updatePost(title, content, id, userId);
+  res.status(statushttp[resp.status]).json(resp.data);
+};
+
 module.exports = {
   newPost,
   getPosts,
   postById,
+  updatePost,
 };
