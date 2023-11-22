@@ -15,7 +15,14 @@ const getPosts = async (_req, res) => {
   res.status(statushttp[post.status]).json(post.data);
 };
 
+const postById = async (req, res) => {
+  const { id } = req.params;
+  const findPost = await postService.postById(id);
+  res.status(statushttp[findPost.status]).json(findPost.data);
+};
+
 module.exports = {
   newPost,
   getPosts,
+  postById,
 };

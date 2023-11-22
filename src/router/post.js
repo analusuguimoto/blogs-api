@@ -8,5 +8,6 @@ const newPost = require('../controllers/post');
 
 router.post('/', userAuth.jwtUser, validation, newPost.newPost);
 router.get('/', userAuth.jwtUser, newPost.getPosts);
+router.get('/:id', userAuth.jwtUser, newPost.postById);
 
 module.exports = router;
