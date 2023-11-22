@@ -7,5 +7,6 @@ const userAuth = require('../jwt/user-auth'); // validação do jwt
 const newPost = require('../controllers/post');
 
 router.post('/', userAuth.jwtUser, validation, newPost.newPost);
+router.get('/', userAuth.jwtUser, newPost.getPosts);
 
 module.exports = router;
