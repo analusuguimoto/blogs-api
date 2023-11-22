@@ -9,5 +9,6 @@ const userAuth = require('../jwt/user-auth');
 router.post('/', validation, user.user);
 router.get('/', userAuth.jwtUser, user.getAllUsers);
 router.get('/:id', userAuth.jwtUser, user.userById);
+router.delete('/me', userAuth.jwtUser, user.deleteUser);
 
 module.exports = router;

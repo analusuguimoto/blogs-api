@@ -8,7 +8,7 @@ const user = async (req, res) => {
   res.status(statushttp[result.status]).json(result.data);
 };
 
-const getAllUsers = async (req, res) => {
+const getAllUsers = async (_req, res) => {
   const result = await userService.getAllUsers();
   res.status(statushttp[result.status]).json(result.data);
 };
@@ -19,8 +19,17 @@ const userById = async (req, res) => {
   res.status(statushttp[result.status]).json(result.data);
 };
 
+const deleteUser = async (req, res) => {
+  const userInfo = req.user.data;
+
+  const { status } = await userService.deleteUser(userInfo);
+
+  res.status(statushttp[status]).end();
+};
+
 module.exports = {
   user,
   getAllUsers,
   userById,
+  deleteUser,
 };
