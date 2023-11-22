@@ -7,6 +7,8 @@ const userRouter = require('./router/user');
 
 const categoryRouter = require('./router/category');
 
+const postRouter = require('./router/post');
+
 const app = express();
 
 // não remova ou mova esse endpoint
@@ -18,6 +20,7 @@ app.use(express.json());
 app.use('/login', loginRouter);
 app.use('/user', userRouter);
 app.use('/categories', categoryRouter);
+app.use('/post', postRouter);
 
 // ...
 
