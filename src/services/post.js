@@ -70,9 +70,24 @@ const updatePost = async (title, content, id, userId) => {
   return { status: 'SUCCESS', data: response };
 };
 
+const deletePost = async (id, userId) => {
+  const getPostById = await postById(id);
+
+  if (getPostById.status === 'NOT_FOUND') {
+    return { status: getPostById.status, data: getPostById.data };
+  }
+
+  if (getPostById.data.userId !== userId) {
+    return { status: 'UNAUTHORIZED', data: { message: 'Unauthorized user' } };
+  }
+  await BlogPost.destroy({ where: { id } });
+  return { status: 'NO_CONTENT' };
+};
+
 module.exports = {
   newPost,
   getPosts,
   postById,
   updatePost,
+  deletePost,
 };

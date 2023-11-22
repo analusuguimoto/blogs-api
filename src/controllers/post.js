@@ -31,9 +31,24 @@ const updatePost = async (req, res) => {
   res.status(statushttp[resp.status]).json(resp.data);
 };
 
+const deletePost = async (req, res) => {
+  const { id } = req.params;
+  const { user } = req;
+  const userId = user.data.id;
+
+  const { status, data } = await postService.deletePost(id, userId);
+
+  if (status === 'NOT_FOUND' || status === 'UNAUTHORIZED') {
+    return res.status(statushttp[status]).json(data);
+  }
+  // console.log(status);
+  res.status(statushttp[status]).end();
+};
+
 module.exports = {
   newPost,
   getPosts,
   postById,
   updatePost,
+  deletePost,
 };

@@ -11,5 +11,6 @@ router.post('/', userAuth.jwtUser, validation, newPost.newPost);
 router.get('/', userAuth.jwtUser, newPost.getPosts);
 router.get('/:id', userAuth.jwtUser, newPost.postById);
 router.put('/:id', userAuth.jwtUser, updateValidation, newPost.updatePost);
+router.delete('/:id', userAuth.jwtUser, newPost.deletePost);
 
 module.exports = router;
